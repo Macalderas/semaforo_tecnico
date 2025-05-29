@@ -1,0 +1,7 @@
+.circulo-rojo {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+  border-radius: 50%;
+  margin: 20px auto;
+}
