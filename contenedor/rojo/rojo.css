@@ -1,7 +1,12 @@
 .circulo-rojo {
   width: 100px;
   height: 100px;
-  background-color: yellow;
+  background-color: #555; /* apagado */
   border-radius: 50%;
   margin: 20px auto;
+  transition: background-color 0.3s ease;
+}
+
+.circulo-rojo.activo {
+  background-color: red;
 }

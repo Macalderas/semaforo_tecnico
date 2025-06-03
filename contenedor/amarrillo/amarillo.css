@@ -1,7 +1,12 @@
-.circulo-amarrillo {
+.circulo-amarillo {
   width: 100px;
   height: 100px;
-  background-color: red;
+  background-color: #555; /* apagado (gris oscuro) */
   border-radius: 50%;
   margin: 20px auto;
+  transition: background-color 0.3s ease;
+}
+
+.circulo-amarillo.activo {
+  background-color: yellow;
 }

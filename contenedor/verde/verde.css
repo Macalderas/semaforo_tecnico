@@ -1,7 +1,14 @@
 .circulo-verde {
   width: 100px;
   height: 100px;
-  background-color: green;
+  background-color: #555; /* apagado */
   border-radius: 50%;
   margin: 20px auto;
+  transition: background-color 0.3s ease;
 }
+
+.circulo-verde.activo {
+  background-color: green;
+}
+
+ 

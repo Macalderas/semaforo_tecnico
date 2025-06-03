@@ -1,7 +1,5 @@
 export function segundoColor() {
-
-  const circulo1 = document.createElement('div');
-  circulo1.classList.add('circulo-rojo'); 
-
-  return  circulo1;
+  const circulo = document.createElement('div');
+  circulo.classList.add('circulo-rojo');
+  return circulo;
 }
