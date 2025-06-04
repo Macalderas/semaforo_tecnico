@@ -1,6 +1,7 @@
 import { primerColor } from "./contenedor/amarrillo/amarillo.js";
 import { segundoColor } from "./contenedor/rojo/rojo.js";
 import { tercerColor } from "./contenedor/verde/verde.js";
+import { crearHeader } from "./header/header.js";
 
 // Import Firebase módulos desde CDN URLs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
@@ -22,10 +23,13 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // Construcción del DOM semáforo
+function inicialDom(){
 const root = document.getElementById('root');
 
 const contenedorSemaforo = document.createElement('div');
 contenedorSemaforo.classList.add('contenedor-semaforo');
+
+root.appendChild(crearHeader());
 root.appendChild(contenedorSemaforo);
 
 const luzAmarilla = primerColor();  // Elemento amarillo
@@ -35,6 +39,8 @@ const luzVerde = tercerColor();     // Elemento verde
 contenedorSemaforo.appendChild(luzRoja);
 contenedorSemaforo.appendChild(luzAmarilla);
 contenedorSemaforo.appendChild(luzVerde);
+}
+inicialDom();
 
 // Escuchar cambios en la base de datos Firebase en la ruta 'semaforo/estado'
 const estadoRef = ref(database, 'semaforo/estado');

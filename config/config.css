@@ -6,15 +6,11 @@ box-sizing: border-box;
 html {
 font-size: 10px;
 font-family: sans-serif;
-
-display: flex;
-justify-content: center;
-align-items: center;
 }
-.contenedor-semaforo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-  }
+
+body {  
+background-color: white;  
+padding: 2rem;
+
+}
   
