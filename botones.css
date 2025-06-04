@@ -1,0 +1,37 @@
+.botones-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton#boton-rojo {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.boton#boton-amarillo {
+    background-color: #ffd700;
+    color: black;
+}
+
+.boton#boton-verde {
+    background-color: #4caf50;
+    color: white;
+}
+
+.boton#boton-reiniciar {
+    background-color: #808080;
+    color: white;
+}
+
