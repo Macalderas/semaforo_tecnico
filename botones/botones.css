@@ -1,0 +1,28 @@
+.botonera {
+  display: flex;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.boton {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.rojo {
+  background-color: #e53935;
+}
+
+.amarillo {
+  background-color: #fdd835;
+  color: black;
+}
+
+.verde {
+  background-color: #43a047;
+}

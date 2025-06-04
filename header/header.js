@@ -7,4 +7,5 @@ export function crearHeader() {
   titulo.textContent = 'Semáforo';
   
   header.appendChild(titulo);  
-  return header;}
+  return header;
+}

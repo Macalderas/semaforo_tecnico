@@ -2,6 +2,7 @@ import { primerColor } from "./contenedor/amarrillo/amarillo.js";
 import { segundoColor } from "./contenedor/rojo/rojo.js";
 import { tercerColor } from "./contenedor/verde/verde.js";
 import { crearHeader } from "./header/header.js";
+import { crearBotones } from "./botones/botones.js";
 
 // Import Firebase módulos desde CDN URLs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
@@ -31,6 +32,7 @@ contenedorSemaforo.classList.add('contenedor-semaforo');
 
 root.appendChild(crearHeader());
 root.appendChild(contenedorSemaforo);
+root.appendChild(crearBotones());
 
 const luzAmarilla = primerColor();  // Elemento amarillo
 const luzRoja = segundoColor();     // Elemento rojo
