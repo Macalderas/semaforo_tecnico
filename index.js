@@ -2,11 +2,8 @@ import { primerColor } from "./contenedor/amarrillo/amarillo.js";
 import { segundoColor } from "./contenedor/rojo/rojo.js";
 import { tercerColor } from "./contenedor/verde/verde.js";
 import { crearHeader } from "./header/header.js";
-import { crearBotones } from "./botones/botones.js";
-
-// Import Firebase módulos desde CDN URLs
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
 
 // Configuración Firebase con tus datos reales
 const firebaseConfig = {
@@ -24,23 +21,51 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
 // Construcción del DOM semáforo
-function inicialDom(){
-const root = document.getElementById('root');
+function inicialDom() {
+  const root = document.getElementById('root');
 
-const contenedorSemaforo = document.createElement('div');
-contenedorSemaforo.classList.add('contenedor-semaforo');
+  const contenedorSemaforo = document.createElement('div');
+  contenedorSemaforo.classList.add('contenedor-semaforo');
 
-root.appendChild(crearHeader());
-root.appendChild(contenedorSemaforo);
-root.appendChild(crearBotones());
+  root.appendChild(crearHeader());
+  root.appendChild(contenedorSemaforo);
 
-const luzAmarilla = primerColor();  // Elemento amarillo
-const luzRoja = segundoColor();     // Elemento rojo
-const luzVerde = tercerColor();     // Elemento verde
+  const luzAmarilla = primerColor(); // Elemento amarillo
+  const luzRoja = segundoColor();    // Elemento rojo
+  const luzVerde = tercerColor();    // Elemento verde
 
-contenedorSemaforo.appendChild(luzRoja);
-contenedorSemaforo.appendChild(luzAmarilla);
-contenedorSemaforo.appendChild(luzVerde);
+  contenedorSemaforo.appendChild(luzRoja);
+  contenedorSemaforo.appendChild(luzAmarilla);
+  contenedorSemaforo.appendChild(luzVerde);
+
+  // Crear y conectar los botones
+  const botonesContainer = document.createElement('div');
+  botonesContainer.classList.add('botones-container');
+
+  const estadoRef = ref(database, 'semaforo/estado');
+
+  function createButton(text, id, value) {
+    const button = document.createElement('button');
+    button.textContent = text;
+    button.id = id;
+    button.classList.add('boton');
+    button.addEventListener('click', () => {
+      set(estadoRef, value); // Envía el estado a Firebase
+    });
+    return button;
+  }
+
+  const buttonRojo = createButton('Botón Rojo', 'boton-rojo', 'rojo');
+  const buttonAmarillo = createButton('Parpadeo Amarillo', 'boton-amarillo', 'amarillo');
+  const buttonVerde = createButton('Botón Verde', 'boton-verde', 'verde');
+  const buttonReiniciar = createButton('Reiniciar', 'boton-reiniciar', 'reiniciar');
+
+  botonesContainer.appendChild(buttonRojo);
+  botonesContainer.appendChild(buttonAmarillo);
+  botonesContainer.appendChild(buttonVerde);
+  botonesContainer.appendChild(buttonReiniciar);
+
+  root.appendChild(botonesContainer); // Coloca los botones debajo del semáforo
 }
 inicialDom();
 
@@ -55,7 +80,6 @@ onValue(estadoRef, (snapshot) => {
   luzAmarilla.classList.remove('activo');
   luzVerde.classList.remove('activo');
 
-  
   if (estado === 'rojo') {
     luzRoja.classList.add('activo');
   } else if (estado === 'amarillo') {
