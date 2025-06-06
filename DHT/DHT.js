@@ -12,8 +12,9 @@ export function crearContenidoVentilador(contenedor) {
   const linea2 = document.createElement('hr');
 
   const imagen = document.createElement("img");
-  imagen.src = "https://img1.picmix.com/output/stamp/normal/6/8/5/4/1634586_431e0.gif";
+  imagen.id = "imagenVentilador";
   imagen.style.width = "100px";
+  imagen.src = "https://elektragt.vtexassets.com/arquivos/ids/180855-800-auto?v=637819298403800000&width=800&height=auto&aspect=true"; // Imagen estática por defecto
 
   contenedor.appendChild(humedad);
   contenedor.appendChild(linea1);
@@ -36,6 +37,13 @@ function obtenerDatosDHT() {
 
         document.getElementById('valorTemperatura').textContent = `Temperatura: ${temp}°C`;
         document.getElementById('valorHumedad').textContent = `Humedad: ${hum}%`;
+
+        const imagen = document.getElementById('imagenVentilador');
+        if (temp >= 30) {
+          imagen.src = "https://img1.picmix.com/output/stamp/normal/6/8/5/4/1634586_431e0.gif"; // GIF animado
+        } else {
+          imagen.src = "https://elektragt.vtexassets.com/arquivos/ids/180855-800-auto?v=637819298403800000&width=800&height=auto&aspect=true"; // Imagen estática
+        }
       }
     })
     .catch(error => {
@@ -44,3 +52,4 @@ function obtenerDatosDHT() {
 
   setTimeout(obtenerDatosDHT, 5000);
 }
+
