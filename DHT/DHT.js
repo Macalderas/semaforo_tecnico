@@ -12,7 +12,7 @@ export function crearContenidoVentilador(contenedor) {
   const linea2 = document.createElement('hr');
 
   const imagen = document.createElement("img");
-  imagen.src = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2w4bng5bjUybWZpMmUybm9wdmYyZGQ2Z2k4MDQ4aHp3Z2VpbmFzeCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Hy9UkBDsAd5XrgRXJv/giphy.gif";
+  imagen.src = "https://img1.picmix.com/output/stamp/normal/6/8/5/4/1634586_431e0.gif";
   imagen.style.width = "100px";
 
   contenedor.appendChild(humedad);
