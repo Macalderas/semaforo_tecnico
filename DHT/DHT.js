@@ -10,7 +10,7 @@ export function crearContenidoVentilador(contenedor) {
   const linea2 = document.createElement('hr');
 
   const imagen = document.createElement("img");
-  imagen.src = "/home/macalderas/Descargas/ventilador.gif"
+  imagen.src = "https://img1.picmix.com/output/stamp/normal/6/8/5/4/1634586_431e0.gif"
 
   contenedor.appendChild(humedad);
   contenedor.appendChild(linea1);
