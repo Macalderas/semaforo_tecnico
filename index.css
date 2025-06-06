@@ -1,3 +1,10 @@
+.contenedor-principal {
+  display: flex;
+  flex-direction: row; /* Fila */
+  align-items: center;
+  gap: 60px;
+}
+
 .contenedor-semaforo {
   width: 120px;
   height: auto;

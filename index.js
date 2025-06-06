@@ -2,8 +2,10 @@ import { primerColor } from "./contenedor/amarrillo/amarillo.js";
 import { segundoColor } from "./contenedor/rojo/rojo.js";
 import { tercerColor } from "./contenedor/verde/verde.js";
 import { crearHeader } from "./header/header.js";
+import { crearContenidoVentilador } from "./DHT/DHT.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+
 
 // Configuración Firebase con tus datos reales
 const firebaseConfig = {
@@ -22,21 +24,40 @@ const database = getDatabase(app);
 
 // Construcción del DOM semáforo
 function inicialDom() {
+
   const root = document.getElementById('root');
 
-  const contenedorSemaforo = document.createElement('div');
-  contenedorSemaforo.classList.add('contenedor-semaforo');
+// Crear contenedor principal
+const contenedorPrincipal = document.createElement('div');
+contenedorPrincipal.classList.add('contenedor-principal');
 
-  root.appendChild(crearHeader());
-  root.appendChild(contenedorSemaforo);
+// Crear semáforo
+const contenedorSemaforo = document.createElement('div');
+contenedorSemaforo.classList.add('contenedor-semaforo');
 
-  const luzAmarilla = primerColor(); // Elemento amarillo
+ const luzAmarilla = primerColor(); // Elemento amarillo
   const luzRoja = segundoColor();    // Elemento rojo
   const luzVerde = tercerColor();    // Elemento verde
 
   contenedorSemaforo.appendChild(luzRoja);
   contenedorSemaforo.appendChild(luzAmarilla);
   contenedorSemaforo.appendChild(luzVerde);
+
+// Crear ventilador
+const contenedorDiv = document.createElement('div');
+contenedorDiv.classList.add('contenedor-ventilador');
+crearContenidoVentilador(contenedorDiv);
+root.appendChild(contenedorDiv)
+
+
+// Añadir al root
+ root.appendChild(crearHeader());
+ contenedorPrincipal.appendChild(contenedorSemaforo);
+ contenedorPrincipal.appendChild(contenedorDiv);
+ root.appendChild(contenedorPrincipal);
+ 
+
+ 
 
   // Crear y conectar los botones
   const botonesContainer = document.createElement('div');
