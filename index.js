@@ -27,6 +27,8 @@ function inicialDom() {
 
   const root = document.getElementById('root');
 
+ root.appendChild(crearHeader());
+
 // Crear contenedor principal
 const contenedorPrincipal = document.createElement('div');
 contenedorPrincipal.classList.add('contenedor-principal');
@@ -42,22 +44,6 @@ contenedorSemaforo.classList.add('contenedor-semaforo');
   contenedorSemaforo.appendChild(luzRoja);
   contenedorSemaforo.appendChild(luzAmarilla);
   contenedorSemaforo.appendChild(luzVerde);
-
-// Crear ventilador
-const contenedorDiv = document.createElement('div');
-contenedorDiv.classList.add('contenedor-ventilador');
-crearContenidoVentilador(contenedorDiv);
-root.appendChild(contenedorDiv)
-
-
-// Añadir al root
- root.appendChild(crearHeader());
- contenedorPrincipal.appendChild(contenedorSemaforo);
- contenedorPrincipal.appendChild(contenedorDiv);
- root.appendChild(contenedorPrincipal);
- 
-
- 
 
   // Crear y conectar los botones
   const botonesContainer = document.createElement('div');
@@ -86,9 +72,23 @@ root.appendChild(contenedorDiv)
   botonesContainer.appendChild(buttonVerde);
   botonesContainer.appendChild(buttonReiniciar);
 
-  root.appendChild(botonesContainer); // Coloca los botones debajo del semáforo
+  root.appendChild(botonesContainer); 
+
+// Crear ventilador
+const contenedorDiv = document.createElement('div');
+contenedorDiv.classList.add('contenedor-ventilador');
+crearContenidoVentilador(contenedorDiv);
+root.appendChild(contenedorDiv)
+
+// Añadir al root
+ contenedorPrincipal.appendChild(contenedorSemaforo);
+ contenedorPrincipal.appendChild(contenedorDiv);
+ root.appendChild(contenedorPrincipal);
+ 
+  // Coloca los botones debajo del semáforo
 }
 inicialDom();
+
 
 // Escuchar cambios en la base de datos Firebase en la ruta 'semaforo/estado'
 const estadoRef = ref(database, 'semaforo/estado');
